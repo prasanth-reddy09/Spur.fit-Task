@@ -1,8 +1,8 @@
 import React from "react";
 import DemoBlock from "./DemoBlock";
-
-const Body = ({ isBlockAdded, graphBlocks }) => {
-	console.log("graphBlocks :", graphBlocks[0]?.height || graphBlocks);
+import GraphBlock from "./GraphBlock";
+const Body = ({ isBlockAdded, graphBlocks, totalWidth }) => {
+	console.log("graphBlocks :", graphBlocks[0] || graphBlocks);
 	return (
 		<div className="w-[73%] border pt-14 px-4 rounded-xl shadow-lg relative">
 			<button className="bg-gray-300 py-0.5 px-2 rounded-md absolute right-2 top-2">
@@ -28,8 +28,12 @@ const Body = ({ isBlockAdded, graphBlocks }) => {
 						<div>
 							{/* graphBlocks */}
 							{graphBlocks &&
-								graphBlocks?.map((block) => (
-									<div>{block?.height || "no height"}</div>
+								graphBlocks?.map((block, index) => (
+									<GraphBlock
+										key={index}
+										blockData={block}
+										totalWidth={totalWidth}
+									/>
 								))}
 						</div>
 					)}

@@ -6,6 +6,7 @@ import { DndContext, DragOverlay } from "@dnd-kit/core";
 
 const Main = () => {
 	const [isBlockAdded, setBlockAdded] = useState(false);
+	const [totalWidth, setTotalWidth] = useState(3);
 
 	const [graphBlocks, setGraphBlocks] = useState([]);
 	console.log("GraphBlocks", graphBlocks);
@@ -16,7 +17,7 @@ const Main = () => {
 
 		if (over?.id === "demoGraph") {
 			setBlockAdded(true);
-			setGraphBlocks(active.data.current.parts);
+			setGraphBlocks([active.data.current]);
 		}
 	};
 
@@ -24,7 +25,11 @@ const Main = () => {
 		<DndContext onDragEnd={handleDragEnd}>
 			<div className="flex gap-x-4">
 				<Sidebar />
-				<Body isBlockAdded={isBlockAdded} graphBlocks={graphBlocks} />
+				<Body
+					isBlockAdded={isBlockAdded}
+					graphBlocks={graphBlocks}
+					totalWidth={totalWidth}
+				/>
 			</div>
 		</DndContext>
 	);
