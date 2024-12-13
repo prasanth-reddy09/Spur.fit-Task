@@ -1,13 +1,13 @@
 import React from "react";
 import Body from "./Body";
 import Sidebar from "./Sidebar";
-import { DndContext, closestCenter } from "@dnd-kit/core";
-import { useGraphContext } from "./GraphProvider";
+import { DndContext, DragOverlay } from "@dnd-kit/core";
 
 const Main = () => {
-	const { handleDragEnd } = useGraphContext();
+	const handleDragEnd = () => {};
+
 	return (
-		<DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+		<DndContext onDragEnd={handleDragEnd}>
 			<div className="flex gap-x-4">
 				<Sidebar />
 				<Body />
