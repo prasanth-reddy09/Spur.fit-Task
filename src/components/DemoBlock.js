@@ -1,9 +1,15 @@
 import React from "react";
 import CurvedArrow from "../svgs/Arrow";
+import { useDroppable } from "@dnd-kit/core";
 
 const DemoBlock = () => {
+	const { setNodeRef, isOver } = useDroppable({ id: "demoGraph" });
+
 	return (
-		<div className="demo-block w-full ">
+		<div
+			className={`demoGraph w-full ${isOver ? "bg-red-500" : ""} `}
+			ref={setNodeRef}
+		>
 			<div className=" w-full ">
 				<div className="absolute -left-24 -top-7">
 					<CurvedArrow />

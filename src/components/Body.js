@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import DemoBlock from "./DemoBlock";
 
-const Body = () => {
-	const [isBlockAdded, setIsBlockAdded] = useState(false);
+const Body = ({ isBlockAdded, graphBlocks }) => {
+	console.log("graphBlocks :", graphBlocks[0]?.height || graphBlocks);
 	return (
 		<div className="w-[73%] border pt-14 px-4 rounded-xl shadow-lg relative">
 			<button className="bg-gray-300 py-0.5 px-2 rounded-md absolute right-2 top-2">
@@ -25,7 +25,13 @@ const Body = () => {
 							<DemoBlock />
 						</div>
 					) : (
-						<div>Graph Data</div>
+						<div>
+							{/* graphBlocks */}
+							{graphBlocks &&
+								graphBlocks?.map((block) => (
+									<div>{block?.height || "no height"}</div>
+								))}
+						</div>
 					)}
 				</div>
 			</div>
