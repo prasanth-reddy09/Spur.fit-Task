@@ -7,11 +7,13 @@ const DemoBlock = () => {
 
 	return (
 		<div
-			className={`demoGraph w-full ${isOver ? "bg-red-500" : ""} `}
+			className={`demoGraph w-full h-[200px] pt-16  ${
+				isOver ? "bg-red-500" : ""
+			} `}
 			ref={setNodeRef}
 		>
 			<div className=" w-full ">
-				<div className="absolute -left-24 -top-7">
+				<div className="absolute -left-24 top-8">
 					<CurvedArrow />
 				</div>
 				<div className="font-bold w-full ml-32">

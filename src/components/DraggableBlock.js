@@ -1,10 +1,20 @@
 import React from "react";
 import { useDraggable } from "@dnd-kit/core";
 
-const DraggableBlock = ({ id, parts }) => {
+const DraggableBlock = ({
+	id,
+	parts,
+	graphId,
+	setGraphBlocks,
+	block,
+	setBlockAdded,
+	type,
+}) => {
+	// console.log("BLock", block);
+
 	const { attributes, listeners, setNodeRef, transform } = useDraggable({
 		id: id,
-		data: { parts },
+		data: { id, parts, graphId, type },
 	});
 
 	const style = {
@@ -20,6 +30,10 @@ const DraggableBlock = ({ id, parts }) => {
 			{...listeners}
 			style={style}
 			className="child-block w-[34%] h-[70px] border flex items-end gap-x-1 z-30 rounded-xl bg-slate-300"
+			onClick={() => {
+				setGraphBlocks((prev) => [...prev, block]);
+				setBlockAdded(true);
+			}}
 		>
 			{parts.map((part, index) => (
 				<div
